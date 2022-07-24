@@ -50,7 +50,7 @@ vim.o.hlsearch = false
 vim.wo.number = true
 vim.wo.relativenumber = true
 vim.o.mouse = 'a'
-vim.o.breakindent = true
+vim.o.autoindent = true
 vim.o.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
@@ -64,6 +64,7 @@ vim.o.scrolloff = 999
 vim.o.sidescrolloff = 999
 vim.o.cursorline = true
 vim.o.showmode = false
+vim.o.clipboard = "unnamedplus"
 
 -- Set colorscheme
 vim.o.termguicolors = true
@@ -120,7 +121,7 @@ require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { 'lua' },
   highlight = { enable = true },
-  indent = { enable = true },
+  -- indent = { enable = true },
 }
 
 -- Diagnostic keymaps
