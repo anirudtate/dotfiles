@@ -1,0 +1,19 @@
+#!/bin/sh
+# minimal version of luke smith's setbg script
+
+# Location of link to wallpaper link.
+bgloc="${XDG_DATA_HOME:-$HOME/.local/share}/bg"
+
+trueloc="$(readlink -f "$1")" &&
+case "$(file --mime-type -b "$trueloc")" in
+	image/* ) ln -sf "$(readlink -f "$1")" "$bgloc";;
+	inode/directory ) ln -sf "$(find "$trueloc" -iregex '.*.\(jpg\|jpeg\|png\|gif\)' -type f | shuf -n 1)" "$bgloc";;
+esac
+
+# If pywal is installed, use it.
+if command -v wal >/dev/null 2>&1 ; then
+	wal -qni "$(readlink -f $bgloc)" >/dev/null 2>&1 &&
+	pidof dwm >/dev/null && xdotool key super+x
+fi
+
+xwallpaper --zoom "$bgloc"
