@@ -32,7 +32,7 @@ update_vol
 
 display () {
 	#printf "%s\n" " $event [$weather] [$memory $cpu] [$bat] [$backlight] [$vol] $time "
-	xsetroot -name " [$memory $cpu] [$bat] [$vol] $time "
+	xsetroot -name " [$memory $cpu] [$bat] [$vol] $time"
 }
 
 # SIGNALLING
@@ -45,6 +45,7 @@ trap	"update_bat;display" 		"RTMIN+2"
 
 while true
 do
+  pidof dwm >/dev/null || break
 	sleep 5 & wait && {
 		# to update item ever n seconds with a offset of m
 		## [ $((sec % n)) -eq m ] && udpate_item
