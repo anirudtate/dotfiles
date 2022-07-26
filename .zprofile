@@ -3,7 +3,7 @@
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="st"
-export BROWSER="brave"
+export BROWSER="firefox"
 export PATH=$PATH:$HOME/.local/bin
 
 # ~/ Clean-up:
@@ -35,7 +35,9 @@ export MBSYNCRC="${XDG_CONFIG_HOME:-$HOME/.config}/mbsync/config"
 export ELECTRUMDIR="${XDG_DATA_HOME:-$HOME/.local/share}/electrum"
 
 # Other program settings:
-export NNN_OPENER="nuke"
+export NNN_OPENER="opener"
+export NNN_OPTS="Cc"
+export NNN_PLUG='b:-!setbg $nnn'
 export DICS="/usr/share/stardict/dic/"
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"

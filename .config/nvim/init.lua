@@ -62,7 +62,7 @@ vim.o.backup = false
 vim.o.swapfile = false
 vim.o.scrolloff = 999
 vim.o.sidescrolloff = 999
-vim.o.cursorline = true
+-- vim.o.cursorline = true
 vim.o.showmode = false
 vim.o.clipboard = "unnamedplus"
 

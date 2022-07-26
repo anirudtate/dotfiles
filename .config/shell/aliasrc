@@ -22,6 +22,7 @@ alias \
 	e="$EDITOR" \
 	v="$EDITOR" \
 	ll="ls -lh" \
+	l="ls -lh" \
 	la="ls -lah" \
-	n="n -Ccrx" \
+	n="nnn" \
 	dots="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
