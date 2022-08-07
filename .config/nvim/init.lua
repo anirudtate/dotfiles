@@ -24,6 +24,8 @@ require('packer').startup(function(use)
   use 'gruvbox-community/gruvbox'
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-lua/plenary.nvim'
+  use 'sbdchd/neoformat'
+  use 'luukvbaal/nnn.nvim'
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable "make" == 1 }
 
   if is_bootstrap then
@@ -48,7 +50,7 @@ vim.o.shiftwidth = 2
 vim.o.expandtab = true
 vim.o.hlsearch = false
 vim.wo.number = true
-vim.wo.relativenumber = true
+-- vim.wo.relativenumber = true
 vim.o.mouse = 'a'
 vim.o.autoindent = true
 vim.o.undofile = true
@@ -79,6 +81,9 @@ vim.g.maplocalleader = ' '
 
 -- Enable Comment.nvim
 require('Comment').setup()
+require("nnn").setup()
+vim.keymap.set('n', '<leader>p', ":NnnPicker<cr>")
+vim.keymap.set('n', '<leader>n', ":NnnExplorer<cr>")
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
@@ -121,7 +126,7 @@ require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { 'lua' },
   highlight = { enable = true },
-  -- indent = { enable = true },
+  indent = { enable = true },
 }
 
 -- Diagnostic keymaps

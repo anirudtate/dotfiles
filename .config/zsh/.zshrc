@@ -13,6 +13,11 @@ HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh-history"
 # Load aliases if existent.
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
 
+# some fuctions
+fd() {
+  cd "$(find -type d | fzf)"
+}
+
 # Basic auto/tab complete:
 autoload -U compinit
 zstyle ':completion:*' menu select

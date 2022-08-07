@@ -35,7 +35,7 @@ export MBSYNCRC="${XDG_CONFIG_HOME:-$HOME/.config}/mbsync/config"
 export ELECTRUMDIR="${XDG_DATA_HOME:-$HOME/.local/share}/electrum"
 
 # Other program settings:
-export NNN_OPENER="opener"
+export NNN_OPENER="open"
 export NNN_OPTS="Cc"
 export NNN_PLUG='b:-!setbg $nnn'
 export DICS="/usr/share/stardict/dic/"
