@@ -186,7 +186,7 @@ handle_extension() {
             exit 1;;
 
         ## Audio
-        aac|flac|m4a|mid|midi|mpa|mp2|mp3|ogg|wav|wma)
+        aac|flac|m4a|mid|midi|mpa|mp2|mp3|ogg|wav|wma|webm)
             handle_audio
             exit 1;;
 

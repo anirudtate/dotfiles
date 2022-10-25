@@ -1,10 +1,10 @@
 # My Hotkeys
 
 Print
-  maim --select | tee ~/pix/ss/$(date +%s).jpg | xclip -sel c -t image/jpg
+  mkdir ~/pix/ss;maim --select | tee ~/pix/ss/$(date +%s).jpg | xclip -sel c -t image/jpg
 
 super + Print
-  maim | tee ~/pix/ss/$(date +%s).jpg | xclip -sel c -t image/jpg
+  mkdir ~/pix/ss;maim | tee ~/pix/ss/$(date +%s).jpg | xclip -sel c -t image/jpg
 
 XF86Audio{RaiseVolume,LowerVolume,Mute}
   pamixer -{i,d,t} 2; kill -34 $(cat ~/.cache/pidofbar)
@@ -17,3 +17,6 @@ super + w
 
 super + n
   st -e "nnn"
+
+super + F10
+  mpv --untimed --no-cache --no-osc --no-input-default-bindings --profile=low-latency --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)
