@@ -8,8 +8,7 @@ end
 
 local packer = require('packer')
 packer.startup(function(use)
-  use 'olivercederborg/poimandres.nvim'
-  use 'folke/tokyonight.nvim'
+  use 'ellisonleao/gruvbox.nvim'
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   use 'wbthomason/packer.nvim'
   use 'numToStr/Comment.nvim'
@@ -81,7 +80,7 @@ require("nvim-autopairs").setup {}
 require('nvim-treesitter.configs').setup {
   ensure_installed = { 'lua' },
   highlight = { enable = true },
-  -- indent = { enable = true },
+  indent = { enable = true },
   context_commentstring = {
     enable = true,
     enable_autocmd = false,
@@ -113,21 +112,26 @@ telescope.setup {
   --   }
   -- },
 }
-require("tokyonight").setup({
-  transparent = true,
-  terminal_colors = true,
-  styles = {
-    comments = { italic = true },
-    keywords = { italic = true },
-    functions = {},
-    variables = {},
-    sidebars = "transparent",
-    floats = "transparent",
-  },
-  hide_inactive_statusline = true,
+-- setup must be called before loading the colorscheme
+-- Default options:
+require("gruvbox").setup({
+  undercurl = true,
+  underline = true,
+  bold = true,
+  italic = true,
+  strikethrough = true,
+  invert_selection = false,
+  invert_signs = false,
+  invert_tabline = false,
+  invert_intend_guides = false,
+  inverse = true, -- invert background for search, diffs, statuslines and errors
+  contrast = "hard", -- can be "hard", "soft" or empty string
+  palette_overrides = {},
+  overrides = {},
+  dim_inactive = false,
+  transparent_mode = true,
 })
-
-vim.cmd [[colorscheme tokyonight]]
+vim.cmd("colorscheme gruvbox")
 
 vim.keymap.set('n', '<leader>p', ":NnnPicker<cr>")
 vim.keymap.set('n', '<leader>n', ":NnnExplorer<cr>")
@@ -157,7 +161,7 @@ end
 require("mason").setup()
 require("mason-lspconfig").setup()
 local lspconfig = require('lspconfig')
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 require("mason-lspconfig").setup_handlers {
   function(server_name)
     require("lspconfig")[server_name].setup {
