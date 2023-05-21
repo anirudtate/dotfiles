@@ -2,7 +2,7 @@
 
 # Enable colors and change prompt:
 autoload -U colors && colors	# Load colors
-PS1="%B%{$fg[red]%}%{$fg[yellow]%}%n%{$fg[magenta]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}%{$reset_color%}>%b "
+PS1="%B%{$fg[red]%}%{$fg[yellow]%}%n%{$fg[blue]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}%{$reset_color%} >%b "
 setopt autocd		# Automatically cd into typed directory.
 
 # History in cache directory:
@@ -39,19 +39,27 @@ bindkey -v '^?' backward-delete-char
 # Change cursor shape for different vi modes.
 function zle-keymap-select () {
     case $KEYMAP in
-        vicmd) echo -ne '\e[1 q';;      # block
-        viins|main) echo -ne '\e[5 q';; # beam
+        vicmd) echo -ne '\e[2 q';;      # block
+        viins|main) echo -ne '\e[6 q';; # beam
     esac
 }
 zle -N zle-keymap-select
 zle-line-init() {
     zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-    echo -ne "\e[5 q"
+    echo -ne "\e[6 q"
 }
 zle -N zle-line-init
-echo -ne '\e[5 q' # Use beam shape cursor on startup.
-preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+echo -ne '\e[6 q' # Use beam shape cursor on startup.
+preexec() { echo -ne '\e[6 q' ;} # Use beam shape cursor for each new prompt.
 
 # Load syntax highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh 2>/dev/null
 # source /usr/share/nvm/init-nvm.sh # use this line if you installed nvm from the aur and want to use it
+
+# pnpm
+export PNPM_HOME="/home/anirud/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

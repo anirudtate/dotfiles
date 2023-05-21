@@ -9,6 +9,7 @@ for command in mount umount sv systemctl pacman updatedb su shutdown poweroff re
 done; unset command
 
 alias \
+	pn="pnpm" \
 	cp="cp -iv" \
 	mv="mv -iv" \
 	rm="rm -vI" \
