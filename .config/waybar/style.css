@@ -7,21 +7,14 @@
 @define-color gray #928374;
 
 * {
-  font-family: JetBrains Mono;
+  font-family: JetBrains Mono, Symbols Nerd Font Mono;
   min-height: 0;
-  font-size: 14px;
+  font-size: 13px;
   border-radius: 0px;
   transition-property: background-color;
   transition-duration: .3s;
 }
 window#waybar {
-  background-color: transparent;
-}
-window > box {
-  margin-left: 4px;
-  margin-right: 4px;
-  margin-top: 4px;
-  border: 1px solid @fg;
   background-color: @bg;
 }
 #workspaces button {

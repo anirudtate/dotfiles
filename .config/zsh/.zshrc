@@ -54,7 +54,6 @@ preexec() { echo -ne '\e[6 q' ;} # Use beam shape cursor for each new prompt.
 
 # Load syntax highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh 2>/dev/null
-# source /usr/share/nvm/init-nvm.sh # use this line if you installed nvm from the aur and want to use it
 
 # pnpm
 export PNPM_HOME="/home/anirud/.local/share/pnpm"
