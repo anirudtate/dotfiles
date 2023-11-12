@@ -2,7 +2,7 @@
   "layer": "top",
     "position": "top",
     "spacing": 4,
-    "modules-left": ["wlr/workspaces"],
+    "modules-left": ["hyprland/workspaces"],
     "modules-right": ["tray", "pulseaudio", "network", "cpu", "memory", "battery", "clock"],
     "tray": {
       "spacing": 4

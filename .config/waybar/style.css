@@ -18,8 +18,10 @@ window#waybar {
   background-color: @bg;
 }
 #workspaces button {
-  padding-left: 6px;
-  padding-right: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
   background-color: @bg;
   color: @fg;
 }
