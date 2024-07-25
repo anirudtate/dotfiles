@@ -1,0 +1,148 @@
+{
+    "bar_id": "bar-0",
+    "ipc": true,
+    "position": "top",
+    "modules-left": ["hyprland/workspaces", "wlr/taskbar"],
+    "modules-center": ["custom/date" ],
+    "modules-right": ["pulseaudio", "network", "cpu", "memory", "temperature", "battery", "tray"],
+
+    "hyprland/workspaces" : {
+     "format": "{icon}",
+       "format-icons": {
+       "active": "",
+       "default": "",
+       "persistent": ""
+    },
+   },
+
+    "wlr/taskbar": {
+         "format": "{icon}",
+         "icon-size": 16,
+         "tooltip-format": "{title}",
+	 "icon-theme": "Papirus-Dark",
+         "on-click": "activate",
+         "on-click-middle": "close",
+	 "on-click-right": "move scratchpad",
+         "ignore-list": [
+             "Alacritty"
+         ],
+         "app_ids-mapping": {
+              "firefoxdeveloperedition": "firefox-developer-edition"
+         }
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": " ",
+            "deactivated": " "
+        },
+	"start-activated": true,
+	"tooltip": false
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "cpu": {
+        "format": "{usage}%  ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{used:0.1f}G  ",
+        "tooltip": false
+
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
+        "hwmon-path-abs": "/sys/devices/platform/coretemp.0/hwmon/",
+        "input-filename": "temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["<span color=\"#4f7a92\"></span>", "", "<span color=\"#ff5f5f\"></span>"]
+    },
+    "battery": {
+        "states": {
+            "good": 82,
+            "warning": 30,
+            "critical": 30
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        "format-good": "{capacity}% {icon}",
+        // "format-full": "",
+        "format-icons": [" ", " ", " ", " ", " "]
+    },
+    "network": {
+        // "interface": "wlp2s0",
+        "format": "{ifname}",
+        "format-wifi": " ",
+        "format-ethernet": " ",
+        "format-disconnected": "", //An empty format will hide the module.
+        "format-disconnected": "",
+        "tooltip-format": "{ifname}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+        "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr}  ",
+        "tooltip-format-disconnected": "Disconnected",
+        "on-scroll-up":"bash .local/bin/netcon",
+        "on-scroll-down":"bash .local/bin/netdiscon",
+        "on-click-right": "foot nmtui",
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": "󰝟  {format_source}",
+        "format-muted": "󰝟 {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": " ",
+        "format-icons": {
+            "default": [" ", " ", "  "]
+        },
+        "on-click": "pavucontrol -t 3",
+        "on-click-right": "pkill pavucontrol"
+    },
+    "custom/date": {
+            "format": "{}",
+            "interval": 1,
+            "exec": "date",
+            //"exec": "date +'%Y-%m-%d %A%l:%M %p'",
+            "on-click": "foot -a=calendar sh -c calcurse",
+            "on-click-middle": "pkill calcurse",
+            "tooltip": false
+        },
+    "mpd": {
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
+        "format-disconnected": "Disconnected ",
+        "format-stopped": "",
+        "unknown-tag": "N/A",
+        "interval": 2,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "on-click": "mpc toggle",
+        "on-click-right": "mpc repeat",
+        "on-click-middle": "mpc stop",
+        "on-scroll-up":"mpc next",
+        "on-scroll-down":"mpc prev",
+        "tooltip-format": "MPD (connected), {artist} - {album} - {title} ⸨{songPosition}/{queueLength}⸩",
+        "tooltip-format-disconnected": "MPD (disconnected)",
+    },
+}
