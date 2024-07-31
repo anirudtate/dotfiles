@@ -30,14 +30,29 @@ window#waybar.empty #window {
 }
 
 #workspaces button {
-    padding: 0px 10px;
-    margin-right: 0px;
+    padding: 2px 8px;
+    padding-right: 10px;
     background-color: transparent;
     color: @color4;
+    opacity: 0.8;
+}
+
+#workspaces button:last-child {
+    margin-right: 20px;
+}
+
+#workspaces button.active {
+    background-color: @color4;
+    color: @bg;
+}
+#workspaces button:hover {
+    background-color: @color4;
+    color: @bg;
 }
 
 #workspaces button.urgent {
-    color: @color1;
+    background-color: @bg;
+    color: @color4;
 }
 
 

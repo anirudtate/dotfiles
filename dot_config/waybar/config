@@ -6,12 +6,12 @@
     "modules-center": ["custom/date" ],
     "modules-right": ["pulseaudio", "network", "cpu", "memory", "temperature", "battery", "tray"],
 
-    "hyprland/workspaces" : {
+"hyprland/workspaces" : {
      "format": "{icon}",
        "format-icons": {
        "active": "",
-       "default": "",
-       "persistent": ""
+       "default": "",
+       "persistent": ""
     },
    },
 
