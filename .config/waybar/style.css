@@ -1,0 +1,98 @@
+@define-color bg #000000;
+@define-color fg #ffffff;
+@define-color gray-100 #f5f5f5;
+@define-color gray-200 #e5e5e5;
+@define-color gray-300 #d4d4d4;
+@define-color gray-400 #a3a3a3;
+@define-color gray-500 #737373;
+@define-color gray-600 #525252;
+@define-color gray-700 #404040;
+@define-color gray-800 #262626;
+@define-color gray-900 #171717;
+
+* {
+  font-family: Fira Code;
+  min-height: 0;
+  font-size: 14px;
+  border-radius: 2px;
+  transition-property: background-color;
+  transition-duration: .3s;
+}
+window#waybar {
+  background-color: @bg;
+  border-bottom: 1px solid @gray-800;
+}
+#workspaces button {
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: @bg;
+  color: @gray-400;
+}
+#workspaces button.active {
+  background-color: @gray-800;
+  color: @fg;
+}
+#workspaces button:hover {
+  background-color: @gray-700;
+  color: @fg;
+}
+#workspaces button.urgent {
+  color: @gray-100;
+  background-color: @gray-800;
+}
+tooltip {
+  background: @gray-900;
+  border: 1px solid @gray-800;
+}
+tooltip label {
+  color: @gray-100;
+}
+#clock, 
+#memory, 
+#cpu,
+#mpd, 
+#pulseaudio, 
+#network, 
+#battery
+{
+  padding: 2px 8px;
+  margin: 4px 2px;
+  color: @gray-300;
+  background-color: @gray-900;
+}
+
+#battery.charging, #battery.plugged {
+    color: @gray-100;
+    background-color: @gray-800;
+}
+
+#battery.critical:not(.charging) {
+    color: @fg;
+    background-color: @gray-800;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#network.disconnected {
+    color: @gray-400;
+}
+#network {
+    color: @gray-300;
+}
+#pulseaudio.muted {
+    color: @gray-400;
+}
+#pulseaudio {
+    color: @gray-300;
+}
+
+
+
+@keyframes blink {
+    to {
+        color: @gray-500;
+    }
+}
