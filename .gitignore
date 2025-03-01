@@ -1,0 +1,11 @@
+.local/share
+.cache
+.vscode
+.npm
+.local/state
+.cursor
+.ssh
+.pki
+.config/google-chrome
+.config/Cursor
+.config/Code
