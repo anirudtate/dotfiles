@@ -40,10 +40,8 @@ vim.opt.scrolloff = 999
 vim.opt.sidescrolloff = 999
 
 -- competitive programming shortcuts
-vim.api.nvim_set_keymap('n', '<Leader>cc',
-  ':w<CR>:!g++ -std=c++17 -DLOCAL -Wshadow -Wall -g -fsanitize=address -fsanitize=undefined -D_GLIBCXX_DEBUG %<CR>',
+vim.api.nvim_set_keymap('n', '<Leader>r', ':w<cr>:vsplit | terminal make run FILE=%:r<CR>i',
   { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Leader>rr', ':vsplit | terminal ./a.out<CR>i', { noremap = true, silent = true })
 -- copy file text to clipboard
 vim.api.nvim_set_keymap('n', '<leader>a', [[:normal! ggVG"+y<CR>]], { noremap = true, silent = true })
 -- Clear highlights on search when pressing <Esc> in normal mode
@@ -66,18 +64,32 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- setup lazy and plugins
 require("lazy").setup({
   spec = {
+    -- {
+    --   -- setup color scheme
+    --   "ellisonleao/gruvbox.nvim",
+    --   lazy = false,
+    --   priority = 1000,
+    --   config = function()
+    --     require('gruvbox').setup({
+    --       transparent_mode = true,
+    --       dim_inactive = false,
+    --     })
+    --
+    --     vim.cmd('colorscheme gruvbox')
+    --   end,
+    -- },
     {
       -- setup color scheme
-      "ellisonleao/gruvbox.nvim",
+      "catppuccin/nvim",
       lazy = false,
       priority = 1000,
+      name = "catppuccin",
       config = function()
-        require('gruvbox').setup({
-          transparent_mode = true,
-          dim_inactive = false,
+        require('catppuccin').setup({
+          flavour = "mocha"
         })
 
-        vim.cmd('colorscheme gruvbox')
+        vim.cmd('colorscheme catppuccin')
       end,
     },
     {
